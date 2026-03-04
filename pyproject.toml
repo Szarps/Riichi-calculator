@@ -1,0 +1,12 @@
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "Riichi calculator"
+version = "0.0.2"
+dependencies = []
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["src*"]
