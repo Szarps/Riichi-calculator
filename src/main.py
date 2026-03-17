@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 # ===Libs===
-import application.hand_length as length
+import application.hand_length as valid
 
 # ===Modules===
 
@@ -13,14 +13,21 @@ D: list = [3, 4, 5]
 E: list = ["R", "R", "R"]
 meld_list: list = [A, B, C, D, E]
 
-simple: tuple = (2, 3, 4, 5, 6, 7, 8)
-terminal: tuple = (1, 9)
-honor: tuple = ("R", "H", "G")
-wind: tuple = ("E", "S", "W", "N")
-tile_type: tuple = ("simple", "terminal", "honor", "wind")
+class Tile:
+    simple: tuple = (2, 3, 4, 5, 6, 7, 8)
+    terminal: tuple = (1, 9)
+    honor: tuple = ("R", "H", "G")
+    wind: tuple = ("E", "S", "W", "N")
+    tile_type: tuple = ("simple", "terminal", "honor", "wind", "dragon")
 
-def length(hand):
-    None
+class Player:
+    dealer: bool = False
+    seat: str
+
+    def __init__(self, seat):
+        if self.seat is "E":
+            self.dealer = True
+        return self.seat, self.dealer
 
 
 def calc_fu(meld):
@@ -57,6 +64,7 @@ def calc_fu(meld):
 
 
 if __name__ == '__main__':
-    if not length(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13):
-        raise "Invalid hand"
+    # if not length([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]):
+    #     raise Exception("Invalid hand")
+    player = Player("W")
     calc_fu(meld_list)
