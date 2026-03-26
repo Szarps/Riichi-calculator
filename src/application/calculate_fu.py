@@ -3,6 +3,7 @@
 # ===Libs===
 
 # ===Modules===
+from tiles import TileTypes as Tile
 
 ##################################################
 A: list = [2, 2, 2]
@@ -10,21 +11,12 @@ B: list = [9, 9, 9]
 C: list = [3, 4, 5]
 D: list = [1, 1]
 E: list = ["R", "R", "R"]
+# maybe each list can have a bool for open or closed, making it simple
 hand: list = [A, B, C, D, E]
 
-class Tile:
-    simple: tuple = (2, 3, 4, 5, 6, 7, 8)
-    terminal: tuple = (1, 9)
-    kind: tuple = ("b", "m", "p")
-    honor: tuple = ("R", "H", "G")
-    wind: tuple = ("E", "S", "W", "N")
-    tile_type: tuple = ("simple", "terminal", "honor", "wind", "dragon")
-    group_closed: bool
-
-    def __init__(self, tile: str):
-        self = tile
-
 meld_closed = True
+# TODO: Separete the above since it is for testing purposes only
+##################################################
 
 class Player:
     seat: str
@@ -35,12 +27,10 @@ class Player:
         if self.seat == "E":
             self.is_dealer = True
 
-# TODO: Separete the above since it is for testing purposes only
-##################################################
 def calc_fu(meld: list):
     value: int = 20
     for i in meld:
-        if not i[0] is i[1] and not i[0] is i[2]:
+        if i[0] != i[1] and i[0] != i[2]:
             continue
         match len(i):
             case 3:
@@ -50,7 +40,7 @@ def calc_fu(meld: list):
                     else:
                         value += 4
 
-                if all(item in Tile.simple for item in i):
+                elif all(item in Tile.simple for item in i):
                     value += 4
                 else:
                     print(i)

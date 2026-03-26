@@ -5,10 +5,28 @@
 
 # ===Modules===
 
-#######################################
+
+#####################################
+# TODO:
+# need to find a way to structure a hand and group tiles together.
+# it needs to understand sequences
+#
+# brute force all combinations, store them in a list and pick higher?
+#   group tiles by kind first to watchout for valid paths
+#   filter if a group of tiles is a meld or a sequence
+#   missing an adjacent number in both directions check for grouping else -> invalid
+#####################################
+
 # R H G
 # N S W E
 # p b m
+
+A: list = [2, 2, 2]
+B: list = [9, 9, 9]
+C: list = [3, 4, 5]
+D: list = [1, 1]
+E: list = ["R", "R", "R"]
+hand: list = [A, B, C, D, E]
 
 
 def tile_grouping(hand_sorted) -> None:
