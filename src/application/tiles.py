@@ -17,11 +17,12 @@ class TileTypes:
 
 
 class Tile:
-    def __init__(self, args: list):
+    def __init__(self, args: str):
         self.value = args[0]
 
         if len(args) == 2:
-            if args[0] in TileTypes.terminal:
+            self.value = int(args[0])
+            if self.value in [i for i in TileTypes.terminal]:
                 self.kind = args[1]
                 self.tile_type = "terminal"
                 print("terminal")
@@ -38,5 +39,5 @@ class Tile:
 
 
 if __name__ == '__main__':
-    tile1 = Tile(["R"])
-    print(tile1.value, tile1.kind if tile1.tile_type == False else "", tile1.tile_type)
+    tile1 = Tile("2p")
+    print(tile1.value, tile1.kind if hasattr(tile1, "kind") else "", tile1.tile_type)
