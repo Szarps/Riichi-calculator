@@ -27,7 +27,7 @@ class Player:
         if self.seat == "E":
             self.is_dealer = True
 
-def calc_fu(meld: list):
+def calc_fu(meld: list, player):
     value: int = 20
     for i in meld:
         if i[0] != i[1] and i[0] != i[2]:
@@ -72,5 +72,5 @@ def calc_fu(meld: list):
 
 if __name__ == '__main__':
     player: object = Player("W")
-    result: int = calc_fu(hand)
+    result: int = calc_fu(hand, player)
     print(f"{result} fu")
