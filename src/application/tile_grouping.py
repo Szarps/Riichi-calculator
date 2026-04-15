@@ -4,7 +4,7 @@
 
 
 # ===Modules===
-
+from itertools import permutations
 
 #####################################
 # TODO:
@@ -17,15 +17,12 @@
 #   missing an adjacent number in both directions check for grouping else -> invalid
 #####################################
 
-# R H G
-# N S W E
-# p b m
 
 A: list = [2, 2, 2]
 B: list = [9, 9, 9]
 C: list = [3, 4, 5]
 D: list = [1, 1]
-E: list = ["R", "R", "R"]
+E: list = ["CHUN", "HAKU", "HATSU"]
 hand: list = [A, B, C, D, E]
 
 
@@ -36,3 +33,6 @@ def tile_grouping(hand_sorted) -> None:
     # grp4: list = [hand_sorted[9], hand_sorted[10], hand_sorted[11]]
     # grp5: list = [hand_sorted[12], hand_sorted[13]]
     return None
+
+if __name__ == "__main__":
+    tile_grouping(hand)
