@@ -20,6 +20,15 @@ Because every good game that stood the test of time isn't quite straightforward 
 
 Hopefully this gives enough perspective about the scope and how this can be a more complicated process.
 
+#### Current challenges I am dealing with:
+
+This part is not one I'm particularly excited to write about since it envolves my current struggles and things I am learning to do:
+
+- Integrating a GUI with pygame-ce:
+    - So far the only feature implemented is "calculate fu", which was one of my biggest gripes, now as the project expands towards an entire hand (instead of a small part), I have found that inserting commands manually is making testing harder, as well as impractical and convoluted for coding. This is a screaming requirement for a GUI (the front end basically) that was planned to be implemented at the end once I worked the logic of everything. However development is showing me this is a need that must be implemented in order for the project to move forward, so currently I am working with the pygame-ce library in order to learn how to create working UI enviroments. Also the reason as to why pygame in particular instead of something like Qt, tkinter, etc is that in the future i plan to work on projects/games using this library, as well as certain flexibility capacities that I would found rather harder to implement with other libraries (animations, menus, specific behaviours).
+
+---
+
 ## Things this project taught me so far: (permanent WIP as i work on it)
 
 - Unit testing
