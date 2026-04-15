@@ -3,8 +3,8 @@ requires = ["setuptools", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "Riichi calculator"
-version = "0.0.2"
+name = "Riichi-calculator"
+version = "0.0.5"
 dependencies = []
 
 [tool.setuptools.packages.find]

@@ -3,84 +3,72 @@
 # ===Libs===
 
 # ===Modules===
+from src.application.tiles import TileTypes as Tile
 
 ##################################################
-A: list = [2, 2, 2]
-B: list = [9, 9, 9]
-C: list = [3, 4, 5]
-D: list = [1, 1]
-E: list = ["R", "R", "R"]
-hand: list = [A, B, C, D, E]
 
-class Tile:
-    simple: tuple = (2, 3, 4, 5, 6, 7, 8)
-    terminal: tuple = (1, 9)
-    kind: tuple = ("b", "m", "p")
-    honor: tuple = ("R", "H", "G")
-    wind: tuple = ("E", "S", "W", "N")
-    tile_type: tuple = ("simple", "terminal", "honor", "wind", "dragon")
-    group_closed: bool
-
-    def __init__(self, tile: str):
-        self = tile
-
-meld_closed = True
-
+# TODO
+# this player class must be separated into it's own file.
+# This was created for testing purposes only
 class Player:
     seat: str
     is_dealer: bool = False
 
     def __init__(self, seat: str):
         self.seat = seat
-        if self.seat == "E":
+        if self.seat == "TON":
             self.is_dealer = True
 
-# TODO: Separete the above since it is for testing purposes only
-##################################################
-def calc_fu(meld: list):
+# TODO
+# need to add functionality for individual meld state (open or closed)
+# right now it assumes all are closed or open
+def calc_fu(meld_list: list, player, meld_closed: bool) -> int:
+    if len(meld_list) != 5:
+        raise Exception; print("hand is invalid, please check hand")
+        exit()
     value: int = 20
-    for i in meld:
-        if not i[0] is i[1] and not i[0] is i[2]:
+
+    # TODO
+    # need to add function to calculate for tsumo and ron
+    # need to account for round wind for yakuhai
+    for i in meld_list:
+        if len(i) == 2:
+            if player.seat in i or Tile.dragon in i: # if it's equal to seat or dragon (yakuhai) +=2
+                value += 2
+        if i[0] != i[1] and i[0] != i[2]:
             continue
         match len(i):
             case 3:
-                if not meld_closed:
-                    if all(item in Tile.simple for item in i):
-                        value += 2
-                    else:
+                if meld_closed:
+                    # since we know all are equal just compare one of the group
+                    if i[0] in Tile.simple:
                         value += 4
+                    else:
+                        value += 8
 
-                if all(item in Tile.simple for item in i):
-                    value += 4
+                elif i[0] in Tile.simple:
+                    value += 2
                 else:
-                    print(i)
-                    value += 8
+                    value += 4
 
             case 4:
                 if meld_closed:
-                    if all(item in Tile.simple for item in i): # assuming all are simples
+                    if i[0] in Tile.simple:
                         value += 16
                     else:
                         value += 32
 
-                elif all(item in Tile.simple for item in i): # value is half if open
+                elif i[0] in Tile.simple:
                     value += 8
                 else:
                     value += 16
 
-            case 2:
-                if all(item in Tile.simple for item in i) or player.seat in i: # if it's honor (yakuhai) +=2
-                    value += 2
-                else:
-                    value += 0
-
             case _:
                 value += 0
 
-        print(value)
+    while value % 10 != 0:
+        value += 2
     return value
 
 if __name__ == '__main__':
-    player: object = Player("W")
-    result: int = calc_fu(hand)
-    print(f"{result} fu")
+    pass

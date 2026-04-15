@@ -4,11 +4,26 @@
 
 
 # ===Modules===
+from itertools import permutations
 
-#######################################
-# R H G
-# N S W E
-# p b m
+#####################################
+# TODO:
+# need to find a way to structure a hand and group tiles together.
+# it needs to understand sequences
+#
+# brute force all combinations, store them in a list and pick higher?
+#   group tiles by kind first to watchout for valid paths
+#   filter if a group of tiles is a meld or a sequence
+#   missing an adjacent number in both directions check for grouping else -> invalid
+#####################################
+
+
+A: list = [2, 2, 2]
+B: list = [9, 9, 9]
+C: list = [3, 4, 5]
+D: list = [1, 1]
+E: list = ["CHUN", "HAKU", "HATSU"]
+hand: list = [A, B, C, D, E]
 
 
 def tile_grouping(hand_sorted) -> None:
@@ -18,3 +33,6 @@ def tile_grouping(hand_sorted) -> None:
     # grp4: list = [hand_sorted[9], hand_sorted[10], hand_sorted[11]]
     # grp5: list = [hand_sorted[12], hand_sorted[13]]
     return None
+
+if __name__ == "__main__":
+    tile_grouping(hand)
