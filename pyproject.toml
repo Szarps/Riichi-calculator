@@ -5,7 +5,45 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "Riichi-calculator"
 version = "0.0.5"
-dependencies = []
+requires-python = ">=3.13"
+dependencies = [
+    "astroid==4.0.4",
+    "autopep8==2.0.4",
+    "black==26.1.0",
+    "click==8.3.1",
+    "dill==0.4.1",
+    "docstring-to-markdown==0.17",
+    "flake8==7.1.2",
+    "importlib-metadata==8.7.1",
+    "iniconfig==2.3.0",
+    "isort==8.0.1",
+    "jedi==0.19.2",
+    "mccabe==0.7.0",
+    "mypy-extensions==1.1.0",
+    "packaging==26.0",
+    "parso==0.8.6",
+    "pathspec==1.0.4",
+    "platformdirs==4.9.2",
+    "pluggy==1.6.0",
+    "pycodestyle==2.12.1",
+    "pydocstyle==6.3.0",
+    "pyflakes==3.2.0",
+    "pygments==2.19.2",
+    "pylint==4.0.5",
+    "pytest==9.0.2",
+    "python-lsp-jsonrpc==1.1.2",
+    "python-lsp-server==1.14.0",
+    "pytokens==0.4.1",
+    "pytoolconfig==1.3.1",
+    "rope==1.14.0",
+    "snowballstemmer==3.0.1",
+    "tomlkit==0.14.0",
+    "typing-extensions==4.15.0",
+    "ujson==5.11.0",
+    "whatthepatch==1.0.7",
+    "yapf==0.43.0",
+    "zipp==3.23.0",
+]
 
 [tool.setuptools.packages.find]
 where = ["."]

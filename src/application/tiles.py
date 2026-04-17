@@ -4,7 +4,7 @@
 
 # ===Modules===
 
-# The class TileTypes might be unnecesary and could benefit of becoming a list
+# The class TileTypes might be unnecesary and could benefit of becoming a tuple/list
 ########################################
 
 class TileTypes:
